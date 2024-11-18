@@ -38,18 +38,18 @@ import { createSign, createVerify } from "node:crypto";
 const ALGORITHM = "sha256";
 
 export function createTransaction(privateKey) {
-	const value = {
-		currency: "USD",
-		amount: 10.2,
-		remark: "Payment for service",
-		created_at: new Date().toISOString(),
-	};
+  const value = {
+    currency: "USD",
+    amount: 10.2,
+    remark: "Payment for service",
+    created_at: new Date().toISOString(),
+  };
 
-	const signer = createSign(ALGORITHM);
-	signer.update(JSON.stringify(value));
-	const signature = signer.sign(Buffer.from(privateKey), "base64");
-	value.signature = signature;
-	return value;
+  const signer = createSign(ALGORITHM);
+  signer.update(JSON.stringify(value));
+  const signature = signer.sign(Buffer.from(privateKey), "base64");
+  value.signature = signature;
+  return value;
 }
 
 
@@ -79,24 +79,24 @@ The verification process requires the account owner's `publicKey`, which can be 
 
 ```js
 export function verifyTransaction(transaction, publicKey) {
-	const verifier = createVerify(ALGORITHM);
-	const { signature, ...value } = transaction;
-	verifier.update(JSON.stringify(value));
+  const verifier = createVerify(ALGORITHM);
+  const { signature, ...value } = transaction;
+  verifier.update(JSON.stringify(value));
 
-	const currentDate = new Date();
-	const created_at = new Date(value.created_at);
+  const currentDate = new Date();
+  const created_at = new Date(value.created_at);
 
-	const maximumWindowMs = 5 * 60 * 1000; // 5 mins
+  const maximumWindowMs = 5 * 60 * 1000; // 5 mins
 
-	// validate the transaction time, if it exceeds 5 minutes, it's considered invalid.
-	if (currentDate - created_at >= maximumWindowMs) {
-		return false;
-	}
+  // validate the transaction time, if it exceeds 5 minutes, it's considered invalid.
+  if (currentDate - created_at >= maximumWindowMs) {
+    return false;
+  }
 
-	return verifier.verify(
-		Buffer.from(publicKey),
-		Buffer.from(signature, "base64"),
-	);
+  return verifier.verify(
+    Buffer.from(publicKey),
+    Buffer.from(signature, "base64"),
+  );
 }
 
 const publicKey = await readFile("public.pem", "utf8");
