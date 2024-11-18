@@ -78,7 +78,7 @@ The QR Code will be
 <img src="qrcode.png" width=300>
 
 
-#### 2.1 Verification
+#### 2.2 Verification
 
 The verification process requires the account owner's `publicKey`, which can be obtained through the mobile banking application:
 
