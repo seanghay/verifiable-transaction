@@ -1,4 +1,4 @@
-# Verifiable Transaction
+# Verifiable Transaction via QR Code
 
 A simple Offline and Decentralized solution for verifying payment transactions without relying on transaction screenshots.
 
