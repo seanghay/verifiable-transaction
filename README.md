@@ -4,9 +4,9 @@ A simple Offline and Decentralized solution for verifying payment transactions w
 
 ### 1. Problem Statement
 
-When making payments through mobile banking apps, salespeople often ask customers to take screenshots of successful transactions. This practice exists because salespeople, unlike the account holders, don't receive transaction notifications or have access to account information. They rely on these screenshots as proof of payment.
+When making payments through mobile banking apps, salespeople/cashier often ask customers to take screenshots of successful transactions. This practice exists because salespeople, unlike the account holders, don't receive transaction notifications or have access to account information. They rely on these screenshots as proof of payment.
 
-However, this creates a security risk: salespeople have no reliable way to verify whether a transaction screenshot is genuine or has been edited, as they're only seeing an image of the payment screen rather than accessing the actual transaction data.
+However, this creates a security risk: salespeople/cashier have no reliable way to verify whether a transaction screenshot is genuine or has been edited, as they're only seeing an image of the payment screen rather than accessing the actual transaction data.
 
 
 ### 2. Proposed Solution
